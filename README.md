@@ -39,11 +39,7 @@ rosdep install --from-paths src --ignore-src -r -y
   - `-r`: Risolvi le dipendenze ricorsivamente.
   - `-y`: Conferma automaticamente l'installazione.
 
-### 5. Verifica che tutte le dipendenze siano state installate
-
-Al termine dell'installazione, verifica che non ci siano errori o dipendenze mancanti.
-
-### 6. Compila il workspace (facoltativo)
+### 5. Compila il workspace (facoltativo)
 
 Dopo aver installato le dipendenze, puoi compilare il workspace:
 
