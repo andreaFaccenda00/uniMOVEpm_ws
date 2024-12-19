@@ -8,6 +8,7 @@ Prima di poter utilizzare `rosdep`, devi inizializzarlo ed eventualmente aggiorn
 sudo rosdep init
 rosdep update
 ```
+
 ### 2. Clona il repository del progetto
 
 Se il progetto non è già sul tuo sistema, clona il repository dalla sua origine (ad esempio, GitHub):
@@ -46,5 +47,41 @@ Dopo aver installato le dipendenze, puoi compilare il workspace:
 ```bash
 colcon build
 ```
+
+## Build from source
+
+### Download all repositories
+
+Per scaricare e configurare un progetto direttamente dal codice sorgente, segui questi passaggi:
+
+```bash
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+git clone https://github.com/ros-controls/ros2_control_demos
+cd ~/ros2_ws/
+vcs import src < src/ros2_control_demos/ros2_control_demos.$ROS_DISTRO.repos
+rosdep update --rosdistro=$ROS_DISTRO
+sudo apt-get update
+```
+
+### Install dependencies
+
+Esegui il seguente comando per installare le dipendenze:
+
+```bash
+rosdep install --from-paths src --ignore-src -r -y
+```
+
+### Build everything
+
+Infine, compila tutto utilizzando il comando:
+
+```bash
+. /opt/ros/${ROS_DISTRO}/setup.sh
+colcon build --symlink-install
+```
+
+
+
 
 
